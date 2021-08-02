@@ -1,0 +1,65 @@
+﻿@model ASP.NETMVC.Models.LIVRES
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="height:auto">
+    <div class="container col-12 col-sm-10 col-md-8 mx-auto card shadow rounded my-4 " style="background-color: #5d6d7e;">
+        <h4>Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TITRE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TITRE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ISBN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ANNEE_EDITION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ANNEE_EDITION.Value.Year)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EDITEUR)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EDITEUR)
+            </dd>
+            <dt>
+                AUTEUR
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AUTEURS.NOM_AUTEUR)
+            </dd>
+            <dt>
+                GENRE
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GENRES.LIBELLE_GENRE)
+            </dd>
+
+        </dl>
+        <div class="form-group">
+            @Html.ActionLink("Retour", "Index", null, new { @class = "btn btn-info my-3 " })
+            @Html.ActionLink("Modifier", "Edit", new { id = Model.ID_LIVRE }, new { @class = "my-3 mx-2 btn btn-success" })
+        </div>
+
+    </div>
+</div>

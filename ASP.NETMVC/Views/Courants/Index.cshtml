@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ASP.NETMVC.Models.COURANTS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row bg-dark">
+    <div class="mx-auto mt-4 col-sm-10 col-md-8 col-lg-6 col-12">
+       
+        @Html.ActionLink("Ajouter Courant", "Create",null,new { @class="my-4 btn btn-primary"})
+        <div class="card shadow rounded border-2 bg-dark">
+            <div class="table-responsive-lg">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Libelle
+                        </th>
+                        <th>
+                            Genre
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LIBELLE_COURANT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GENRES.LIBELLE_GENRE)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Modifier", "Edit", new { id = item.ID_COURANT }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID_COURANT }) |
+                                @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_COURANT })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+         </div>
+    </div>
+</div>

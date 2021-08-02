@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ASP.NETMVC.Models.LIVRES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row bg-dark">
+    <div class="mx-auto mt-4 col-sm-11 col-12">
+        <div class="">
+            @Html.ActionLink("Ajouter Livre", "Create", null, new { @class = "my-4 btn btn-primary" })
+        </div>
+        <div class="card shadow rounded border-2 bg-dark">
+            <div class="" style="background-color: #5d6d7e; ">
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                 {
+                    <div class="d-flex my-3">
+                        @Html.DropDownList("genre", null, "GENRES", new { @class = "mx-1 form-control" , style= "background-color: #5d6d7e;color:white" })
+                        @Html.DropDownList("auteur", null, "AUTEURS", new { @class = "mx-1 form-control", style = "background-color: #5d6d7e;color:white" })
+                        @Html.TextBox("SearchString", "", new { @class = "mx-1 form-control", placeholder = "annee", style = "background-color:#5d6d7e;color:white" })
+                        <input type="submit" value="Chercher" class="mx-1 btn btn-success form-control" />
+                    </div>
+                 }
+            </div>
+            <div class="table-responsive-sm">
+                <table class="table" style="background-color :#34495e  ">
+                    <thead  class="thead-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ISBN)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TITRE)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EDITEUR)
+                            </th>
+                            <th>
+                                @Html.ActionLink("ANNEE D'EDITION", "Index", new { sortOrder = ViewBag.AnneeTrie })
+
+                            </th>
+                            <th>
+                                @Html.ActionLink("AUTEUR", "Index", new { sortOrder = ViewBag.AuteurTrie })
+
+                            </th>
+                            <th>
+                                GENRE
+
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="background-color :#34495e  ">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ISBN))
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TITRE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EDITEUR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ANNEE_EDITION.Value.Year)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AUTEURS.NOM_AUTEUR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GENRES.LIBELLE_GENRE)
+                                </td>
+                                <td>
+                                    <a target='_blank' href="@item.URL_LIVRE/@item.LIVRE">lire</a>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID_LIVRE }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID_LIVRE }) |
+                                    
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_LIVRE })
+                                    
+
+                                   
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#livretable').DataTable();
+    });
+</script>

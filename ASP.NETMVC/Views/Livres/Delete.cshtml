@@ -1,0 +1,76 @@
+﻿@model ASP.NETMVC.Models.LIVRES
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="row" style="height:auto">
+    <div class="container col-12 col-sm-10 col-md-8 mx-auto card shadow rounded my-4 " style="background-color: #5d6d7e;">
+        <h3>Etes vous sur de supprimer ce livre?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ISBN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TITRE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TITRE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EDITEUR)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EDITEUR)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ANNEE_EDITION)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ANNEE_EDITION)
+            </dd>
+
+            <dt>
+                AUTEUR
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AUTEURS.NOM_AUTEUR)
+            </dd>
+
+            <dt>
+                GENRE
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GENRES.LIBELLE_GENRE)
+            </dd>
+
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Retour", "Index", null, new { @class = "my-3 btn btn-info" })
+                <input type="submit" value="Supprimer" class="my-3 mx-1 btn btn-danger" /> 
+            </div>
+        }
+    </div>
+</div>
+       
+

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ASP.NETMVC.Models.GENRES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row bg-dark">
+    <div class="mx-auto mt-4 col-sm-10 col-md-8 col-lg-6 col-12">
+
+
+        @Html.ActionLink("Ajouter Genre", "Create", null, new { @class = "my-4 btn btn-primary" })
+        <div class="card shadow rounded border-2 bg-dark">
+            <div class="table-responsive-lg">
+                <table class="table " >
+                    <tr>
+                        <th>
+                            Libelle
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                     {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LIBELLE_GENRE)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Modifier", "Edit", new { id = item.ID_GENRE }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID_GENRE }) |
+                                @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_GENRE })
+                            </td>
+                        </tr>
+                     }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+</script>

@@ -1,0 +1,35 @@
+﻿@model ASP.NETMVC.Models.GENRES
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row" style="height:auto">
+    <div class="container col-12 col-sm-10 col-md-8 mx-auto card shadow rounded my-4 " style="background-color: #5d6d7e;">
+        <h4>Etes vous sure de supprimer ce genre litteraire?</h4>
+        <hr>
+        <dl class="dl-horizontal">
+            <dt>
+                <Span class="h4"> LIBELLE : </Span>
+            </dt>
+
+            <dd>
+                <Span class="h4">@Html.DisplayFor(model => model.LIBELLE_GENRE) </Span>
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Retour", "Index", null, new { @class = "btn btn-info my-3" })
+                <input type="submit" value="Supprimer" class="my-3 mx-2 btn btn-danger" />
+            </div>
+        }
+    </div>
+ </div>

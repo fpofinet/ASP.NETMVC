@@ -1,0 +1,46 @@
+﻿@model ASP.NETMVC.Models.COURANTS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="height:auto">
+    <div class="container col-12 col-sm-10 col-md-8 mx-auto card shadow rounded my-4 " style="background-color: #5d6d7e;">
+        <h3>
+           Etes vous sur de supprimer ce courant litteraire?
+        </h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                LIBELLE
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LIBELLE_COURANT)
+            </dd>
+
+            <dt>
+                GENRE
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GENRES.LIBELLE_GENRE)
+            </dd>
+
+        </dl>
+        @using (Html.BeginForm())
+         {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Retour", "Index", null, new { @class = "btn btn-info my-3 " })
+                <input type="submit" value="Supprimer" class="btn btn-danger my-3 mx-2" /> 
+
+            </div>
+         }
+
+    </div>
+</div>
+        
